@@ -31,18 +31,18 @@ func main() {
     fmt.Printf("Account State: %+v\n", accountState)
 
     
-    txHash, err := deployDApp(client, keyPair, "<smart_contract_code_or_data>")
+    txHash, err := deployzApp(client, keyPair, "<smart_contract_code_or_data>")
     if err != nil {
-        log.Fatalf("Failed to deploy dApp: %v", err)
+        log.Fatalf("Failed to deploy zApp: %v", err)
     }
 
-    fmt.Printf("Transaction Hash for dApp deployment: %s\n", txHash)
+    fmt.Printf("Transaction Hash for zApp deployment: %s\n", txHash)
 }
 
 
-func deployDApp(client *znn.Client, keyPair *crypto.KeyPair, dAppData string) (string, error) {
+func deployzApp(client *znn.Client, keyPair *crypto.KeyPair, zAppData string) (string, error) {
     
-    block, err := client.Ledger.CreateTransactionBlock(keyPair.Address, common.AddressFromString("z1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqsgg9njn"), 0, []byte(dAppData))
+    block, err := client.Ledger.CreateTransactionBlock(keyPair.Address, common.AddressFromString("z1qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqsgg9njn"), 0, []byte(zAppData))
     if err != nil {
         return "", fmt.Errorf("failed to create transaction block: %w", err)
     }
